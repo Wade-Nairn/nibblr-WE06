@@ -1,0 +1,17 @@
+<div ng-include=" 'views/partials/subnav.html' "></div>
+
+<div class="container">
+	<a href="#/editUser/{{ user.id }}"><md-button class="md-raised md-primary" type="button">Edit my Profile</md-button></a>
+	
+	<div layout="row">
+	<div flex="50">
+
+		<h3>{{ user.name }}</h3>
+		<p>{{ user.email }}</p>
+		<p>{{ user.info }}</p>
+	</div>
+	<div flex="50">
+		<img class="avatar-image" src="{{ 'uploads/' + user.avatar}}">
+	</div>
+	</div>
+</div>

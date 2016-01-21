@@ -1,0 +1,69 @@
+<div ng-include=" 'views/partials/subnav.html' "></div>
+
+<div class="container">
+	
+	<div ng-if="recipe.user_id == user.id">	
+	<md-button class="md-raised md-primary" ng-click="deleteRecipe()" type="button">Delete this recipe</md-button>
+	<a href="#/edit/{{ recipe.id }}"><md-button class="md-raised md-primary"type="button">Edit this recipe</md-button></a>
+
+	</div>
+	<div ng-cloak class="recipe-image" style="background-image: url({{ 'uploads/' + recipe.image}})" class="green">
+		
+	</div>
+	<h1>{{ recipe.title }}</h1>
+	
+	<h2>What you need</h2>
+	<ul>
+		<li ng-repeat="ingredient in recipe.ingredients">
+			<p>{{ ingredient.pivot.quantity }} - {{ ingredient.name }}</p>
+		</li>
+	</ul>
+	
+	<h2>How to make it</h2>
+	<p>{{ recipe.method }}</p>
+
+	<h2>Author</h2>
+	<div class="author" layout="row" layout-align="space-between center">
+		<div class="author-text">
+		<a href="#/profile/{{ recipe.author.id }}">{{ recipe.author.name }}</a>
+		<p>On {{ recipe.created_at | date:"dd/MMM/yyyy" }}</p>
+		</div>
+		<div>
+			<img class="author-pic" height="100px" src="{{ 'uploads/' + recipe.author.avatar}}" alt="">
+		</div>
+	</div>
+	
+	<div class="add-book">
+	<h2>Add to a book...</h2>
+		<div layout="column" layout-align="center center" style="height: 100px;">
+		    <md-select placeholder="Add to Book" ng-model="bookName" md-on-open="loadBooks()" style="min-width: 200px;">
+		      <md-option ng-value="book.id" ng-repeat="book in books | filter: {'user_id': user.id}">{{ book.name }}</md-option>
+		    </md-select>
+		    <md-button class="md-raised md-primary" ng-click="addToBook()" type="button">Add</md-button>
+	  	</div>
+	</div>
+	<div class="comments" ng-controller="commentCtrl">
+		
+		<h2>Comments</h2>
+	     <md-button class="md-primary md-raised" ng-click="commentDialog($event)" flex-sm="100	" flex-md="100" flex-gt-md="auto">
+	      New Comment
+	      </md-button>
+
+		
+		<md-card class="card" ng-repeat="comment in comments">
+			<div ng-if="comment.recipe_id == recipe.id">
+		    	<div class="flex flex-j-between">
+			    	<h2 class="md-title">{{ comment.author.name}}</h2>
+			    	<div ng-if="comment.user_id == user.id">
+						<i ng-click="deleteComment(comment)" class="material-icons i-color">delete</i>
+					</div>
+			    </div>
+			    <md-card-content>
+			        <p>{{ comment.content }}</p>
+			    </md-card-content>
+			</div> 
+	    </md-card>
+	    
+		     
+	</div>    
+</div>

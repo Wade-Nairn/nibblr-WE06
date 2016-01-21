@@ -1,0 +1,60 @@
+**************************
+NIBBLR REST
+**************************
+
+Users
+GET		/auth/login											Log a user in
+GET		/auth/logout										Log a user out
+POST	/user 												Create a user (Register)
+PUT		/user/{id}											Update a user
+DELETE 	/user/{id}											Delete a user
+
+Recipe
+GET		/recipe 											Show all recipes
+GET		/recipe/{id}										Show one recipe
+POST	/recipe 											Create one recipe
+PUT		/recipe/{id} 										Edit one recipe
+Delete	/recipe/{id} 										Delete one recipe
+
+Recipe Book
+GET		/recipe-book 										Show all recipes book
+GET		/recipe-book/{id}									Show one recipe book
+POST	/recipe-book 										Create one recipe book
+PUT		/recipe-book/{id} 									Edit one recipe book
+Delete	/recipe-book/{id} 									Delete one recipe book
+
+Comment
+GET		/comment 											Show all rcomments
+POST	/comment 											Create one comment
+PUT		/comment/{id} 										Edit one comment
+Delete	/comment/{id} 										Delete one comment
+
+Ingredients
+GET		/ingredient/{id}									Show an ingredient
+POST	/ingredient 										Create an ingredient
+
+Tags
+GET		/tag/{name}											Show a tag
+POST	/tag 												Create a tag
+
+Follow users
+GET  	/user/follow/{id}									A user can follow another user
+GET  	/user/unfollow/{id}									A user can unfollow another user
+
+Saving a recipe to a book
+GET  	/recipe/{recipe_id}/add-to-book/{book_id}			Add a recipe to a book
+GET  	/recipe/{recipe_id}/remove-from-book/{book_id}		Remove a recipe to a book
+
+
+*********************************************
+MAYBE
+*********************************************
+
+
+Following a tag
+GET  /user/follow-tag/{id} 									A user can follow a tag
+GET  /user/unfollow-tag/{id} 								A user can unfollow a tag		
+
+
+GET  recipe/{id}/add-tag-name/{name}
+GET  recipe/{id}/remove-tag-name/{name}

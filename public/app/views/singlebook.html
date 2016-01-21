@@ -1,0 +1,21 @@
+<div ng-include=" 'views/partials/subnav.html' "></div>
+
+<div class="container">
+	<h1>{{ book.name }}</h1>
+  <md-button class="md-raised md-primary" ng-click="deleteBook()" type="button">Delete this book</md-button>
+  
+  <md-grid-list
+        md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px" >
+    <md-grid-tile ng-repeat="recipe in book.recipes "
+                  md-rowspan="{{tile.span.row}}"
+                  md-colspan="{{tile.span.col}}"
+                  md-colspan-sm="1"                  
+                  style="background-image: url(/uploads/{{recipe.image}})"
+                  class="tile" >
+      <a href="/#/{{ recipe.id }}"><md-grid-tile-footer class="opacity flex flex-j-center"><h3>{{ recipe.title }}</h3></md-grid-tile-footer></a>
+    </md-grid-tile>
+  </md-grid-list>
+
+</div>
